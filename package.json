@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "react-gravatar": "^2.6.3",
     "react-icons": "^2.2.5",
     "react-native-icons": "^0.7.1",
     "react-native-vector-icons": "^4.4.2",

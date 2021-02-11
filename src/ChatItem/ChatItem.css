@@ -22,8 +22,12 @@
     min-width: 240px;
 }
 
-.rce-citem:hover {
+.rce-citem:hover, .rce-container-citem.active .rce-citem {
     background: #f9f9f9;
+}
+
+.rce-container-citem.active .rce-citem {
+    background: #cff7db;
 }
 
 .rce-citem-avatar {

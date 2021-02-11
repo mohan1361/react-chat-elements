@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './ChatItem.css';
 
-//import Avatar from '../Avatar/Avatar';
 
 import {
     format,
@@ -13,12 +13,21 @@ export class ChatItem extends Component {
 
     render() {
         const statusColorType = this.props.statusColorType;
-        const Avatar = this.props.avatar; 
-
         return (
             <div
-                className={classNames('rce-container-citem', this.props.className)}
-                onClick={this.props.onClick}
+                className={classNames('rce-container-citem', this.props.active ? "active" : "", this.props.className)}
+                onClick={(e) => {
+                    
+                    document.querySelectorAll(".rce-container-citem").forEach(element => {
+                        if(element) {
+                            element.classList.remove("active")
+                        }
+                    });
+                    e.target.closest(".rce-container-citem").classList.add("active")
+                    // console.log(e.target);
+
+                    this.props.onClick()
+                }}
                 onContextMenu={this.props.onContextMenu}>
                 <div className="rce-citem">
                     <div className={classNames(
@@ -27,8 +36,7 @@ export class ChatItem extends Component {
                                 'rce-citem-status-encircle': statusColorType === 'encircle',
                             }
                         )}>
-                        // Avatar
-                        <Avatar />
+                        {this.props.avatar}
                     </div>
 
                     <div className="rce-citem-body">
@@ -69,7 +77,8 @@ export class ChatItem extends Component {
 ChatItem.defaultProps = {
     id: '',
     onClick: null,
-    avatar: '',
+    active: false,
+    avatar: PropTypes.element,
     avatarFlexible: false,
     alt: '',
     title: '',

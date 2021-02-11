@@ -14,6 +14,7 @@ import {
     Popup,
     MeetingList,
 } from '../src';
+import Gravatar from 'react-gravatar'
 
 import FaSearch from 'react-icons/lib/fa/search';
 import FaComments from 'react-icons/lib/fa/comments';
@@ -124,7 +125,7 @@ export class App extends Component {
                         })),
                         dataSource: Array(this.token() + 5).fill(1).map(x => ({
                             id: String(Math.random()),
-                            avatar: `data:image/png;base64,${this.photo()}`,
+                            avatar: <img src={`data:image/png;base64,${this.photo()}`} />,
                             message: loremIpsum({ count: 1, units: 'sentences' }),
                             title: loremIpsum({ count: 2, units: 'words' }),
                             avatarFlexible: true,
@@ -174,12 +175,13 @@ export class App extends Component {
                     onReplyMessageClick: () => {
                         console.log('onReplyMessageClick');
                     },
-                    avatar: `data:image/png;base64,${this.photo()}`,
+                    avatar: <img src={`data:image/png;base64,${this.photo()}`} />,
                 };
             case 'chat':
                 return {
                     id: String(Math.random()),
-                    avatar: `data:image/png;base64,${this.photo()}`,
+                    active: parseInt(Math.random() * 100 % 2) === 1,
+                    avatar: <Gravatar email={"mohan@alfaintelli.tech"} />,
                     avatarFlexible: true,
                     statusColor: 'lightgreen',
                     statusColorType: parseInt(Math.random() * 100 % 2) === 1 ? 'encircle' : undefined,
