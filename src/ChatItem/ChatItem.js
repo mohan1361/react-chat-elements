@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ChatItem.css';
 
-import Avatar from '../Avatar/Avatar';
+//import Avatar from '../Avatar/Avatar';
 
 import {
     format,
@@ -13,6 +13,7 @@ export class ChatItem extends Component {
 
     render() {
         const statusColorType = this.props.statusColorType;
+        const Avatar = this.props.avatar; 
 
         return (
             <div
@@ -26,27 +27,8 @@ export class ChatItem extends Component {
                                 'rce-citem-status-encircle': statusColorType === 'encircle',
                             }
                         )}>
-                        <Avatar
-                            src={this.props.avatar}
-                            alt={this.props.alt}
-                            className={statusColorType === 'encircle' ? 'rce-citem-avatar-encircle-status' : ''}
-                            size="large"
-                            letterItem={this.props.letterItem}
-                            sideElement={
-                                this.props.statusColor &&
-                                <span
-                                    className='rce-citem-status'
-                                    style={statusColorType === 'encircle' ? {
-                                        boxShadow: `inset 0 0 0 2px ${this.props.statusColor}, inset 0 0 0 5px #FFFFFF`
-                                    } : {
-                                        backgroundColor: this.props.statusColor,
-                                    }}>
-                                    {this.props.statusText}
-                                </span>
-                            }
-                            onError={this.props.onAvatarError}
-                            lazyLoadingImage={this.props.lazyLoadingImage}
-                            type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
+                        // Avatar
+                        <Avatar />
                     </div>
 
                     <div className="rce-citem-body">
